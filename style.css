@@ -1,0 +1,36 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+textarea, button {
+    margin-bottom: 10px;
+}
+
+.result-container {
+    display: flex;
+}
+
+.code-container, .parsed-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.code-container textarea, .parsed-container div {
+    width: 100%;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
