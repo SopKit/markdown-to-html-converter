@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Markdown to HTML Converter</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Markdown to HTML Converter</h2>
+        <textarea id="inputText" rows="10" cols="50" placeholder="Enter Markdown text"></textarea><br>
+        <button onclick="convertToHtml()">Convert to HTML</button>
+        <button onclick="convertToMarkdown()">Convert to Markdown</button><br><br>
+
+        <div class="result-container">
+            <div class="code-container">
+                <h3>HTML Code</h3>
+                <button onclick="copyHtmlCode()">Copy HTML</button>
+                <textarea id="htmlCode" rows="10" cols="50" readonly></textarea>
+            </div>
+            <div class="parsed-container">
+                <h3>Parsed HTML</h3>
+                <button onclick="copyParsedHtml()">Copy Parsed HTML</button>
+                <div id="parsedHtml"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function convertToHtml() {
+            var markdownText = document.getElementById('inputText').value;
+            var converter = new showdown.Converter();
+            var htmlText = converter.makeHtml(markdownText);
+            document.getElementById('htmlCode').value = htmlText;
+            document.getElementById('parsedHtml').innerHTML = htmlText;
+        }
+
+        function convertToMarkdown() {
+            var htmlText = document.getElementById('inputText').value;
+            var converter = new showdown.Converter({ simpleLineBreaks: true });
+            var markdownText = converter.makeMarkdown(htmlText);
+            document.getElementById('htmlCode').value = htmlText;
+            document.getElementById('parsedHtml').innerHTML = markdownText;
+        }
+
+        function copyHtmlCode() {
+            var htmlCode = document.getElementById('htmlCode');
+            htmlCode.select();
+            document.execCommand('copy');
+            alert('HTML code copied to clipboard');
+        }
+
+        function copyParsedHtml() {
+            var parsedHtml = document.getElementById('parsedHtml');
+            var range = document.createRange();
+            range.selectNode(parsedHtml);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            alert('Parsed HTML copied to clipboard');
+        }
+    </script>
+</body>
+</html>
+
+        }
+    </script>
+</body>
+</html>
